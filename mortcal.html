@@ -1,0 +1,173 @@
+<!doctype html>
+<html><!-- InstanceBegin template="/Templates/template.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta charset="utf-8">
+<title>template</title>
+<link href="assets/css/main.css" rel="stylesheet" type="text/css">
+<!-- InstanceBeginEditable name="EditRegion2" -->EditRegion2<!-- InstanceEndEditable -->
+</head>
+<body>
+    <div id="banner">
+    <img src="images/banner.png" width="975" height="160" alt=""/> </div>
+<nav id="nav">
+				<ul class="container">
+					<li><a href="index.html">Home</a></li>
+				  <li><a href="mortcal.html">Mortgage Calculator</a></li>
+					<li><a href="#portfolio">Property Listings</a></li>
+					<li><a href="#contact">Leave a Review</a></li>
+                    <li><a href="locate.html">Find Us</a></li>
+				</ul>
+</nav>
+			<!-- InstanceBeginEditable name="EditRegion1" --> 
+            <div id="mortcalwrapper">         
+            <div class="wrapper style1 first">
+            <form name=mortgagecalc method=POST>
+<p>Amount to borrow (in dollars): 
+<input type=text onkeypress="return validNumber(event)" name=loan size=10> <span class="error" id="loanError"></span></p>
+<p>Term of the mortgage (in years): 
+<input type=text onkeypress="return validNumber(event)" name=years size=5> <span class="error" id="yearsError"></span></p>
+<p>Interest rate (%)
+<input type=text onkeypress="return validNumber(event)" name=rate size=5> <span class="error" id="rateError"></span></p>
+<input type=button onClick="return myPayment()" value=Calculate> 
+<br>
+<br>
+ <input type=button onClick="return myPaymentReset()" value=Reset>
+</form>
+
+<p class="monthlypayment" id="monthlyPayment"> </p>
+<p class="reminder" id="reminder"></p>
+</div>
+<script>
+function validNumber(fieldinput){
+var unicode=fieldinput.charCode? fieldinput.charCode : fieldinput.keyCode;
+if ((unicode!=8) && (unicode!=46)) { //if the key isn't the backspace key (which we should allow)
+if (unicode<48||unicode>57) //if not a number
+return false; //disable key press
+}
+}
+
+function myPayment()
+{
+// Reset error messages to blank
+document.getElementById('loanError').innerHTML = '';
+document.getElementById('yearsError').innerHTML = '';
+document.getElementById('rateError').innerHTML = '';
+
+// Form validation checking
+if ((document.mortgagecalc.loan.value === null) || (document.mortgagecalc.loan.value.length === 0) || (isNaN(document.mortgagecalc.loan.value) === true))
+{
+document.getElementById('monthlyPayment').innerHTML = 'Please enter the missing information.';
+document.getElementById('loanError').innerHTML = 'Numeric value required. Example: 200000';
+} else if ((document.mortgagecalc.years.value === null) || (document.mortgagecalc.years.value.length === 0) || (isNaN(document.mortgagecalc.years.value) === true))
+{
+document.getElementById('monthlyPayment').innerHTML = 'Please enter the missing information.';
+document.getElementById('yearsError').innerHTML = 'Numeric value required. Example: 30';
+} else if ((document.mortgagecalc.rate.value === null) || (document.mortgagecalc.rate.value.length === 0) || (isNaN(document.mortgagecalc.rate.value) === true))
+{
+document.getElementById('monthlyPayment').innerHTML = 'Please enter the missing information.';
+document.getElementById('rateError').innerHTML = 'Numeric value required. Example: 4.20';
+} else
+{
+// Set variables from form data
+var loanprincipal = document.mortgagecalc.loan.value;
+var months = document.mortgagecalc.years.value * 12;
+var interest = document.mortgagecalc.rate.value / 1200;
+
+// Calculate mortgage payment and display result
+document.getElementById('monthlyPayment').innerHTML = 'Your monthly mortgage payment will be ' + '$' + (loanprincipal * interest / (1 - (Math.pow(1/(1 + interest), months)))).toFixed(2)+'.';
+document.getElementById('reminder').style.display = 'inline';
+}
+
+// payment = principle * monthly interest/(1 - (1/(1+MonthlyInterest)*Months))
+
+}
+
+function myPaymentReset()
+{
+// Reset everything to default/null/blank
+document.getElementById('monthlyPayment').innerHTML = 'Values reset';
+document.getElementById('reminder').style.display = 'none';
+document.getElementById('loanError').innerHTML = '';
+document.getElementById('yearsError').innerHTML = '';
+document.getElementById('rateError').innerHTML = '';
+document.mortgagecalc.loan.value = null;
+document.mortgagecalc.years.value = null;
+document.mortgagecalc.rate.value = null;
+}
+</script>
+            	</div>
+            </div>
+            <!-- InstanceEndEditable -->
+            <div class="wrapper style4">
+<article id="contact" class="container 75%">
+					<header>
+						<h2>Leave us a message.</h2>
+						<p>We will try to get back to you as soon as possible!</p>
+					</header>
+					<div>
+						<div class="row">
+							<div class="12u">
+								<form method="post" action="#">
+									<div>
+										<div class="row">
+											<div class="6u 12u(mobile)">
+												<input type="text" name="name" id="name" placeholder="Name" />
+											</div>
+											<div class="6u 12u(mobile)">
+												<input type="text" name="email" id="email" placeholder="Email" />
+											</div>
+										</div>
+										<div class="row">
+											<div class="12u">
+												<input type="text" name="subject" id="subject" placeholder="Subject" />
+											</div>
+										</div>
+										<div class="row">
+											<div class="12u">
+												<textarea name="message" id="message" placeholder="Message"></textarea>
+											</div>
+										</div>
+										<div class="row 200%">
+											<div class="12u">
+												<ul class="actions">
+													<li><input type="submit" value="Send Message" /></li>
+													<li><input type="reset" value="Clear Form" class="alt" /></li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+                        <div class="row">
+							<div class="12u">
+								<hr />
+								<h3>Find us on ...</h3>
+								<ul class="social">
+									<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+									<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+									<li><a href="#" class="icon fa-linkedin"><span class="label">LinkedIn</span></a></li>
+									<li><a href="#" class="icon fa-tumblr"><span class="label">Tumblr</span></a></li>
+									<li><a href="#" class="icon fa-google-plus"><span class="label">Google+</span></a></li>
+									<!--
+									<li><a href="#" class="icon fa-rss"><span>RSS</span></a></li>
+									<li><a href="#" class="icon fa-instagram"><span>Instagram</span></a></li>
+									<li><a href="#" class="icon fa-foursquare"><span>Foursquare</span></a></li>
+									<li><a href="#" class="icon fa-skype"><span>Skype</span></a></li>
+									<li><a href="#" class="icon fa-soundcloud"><span>Soundcloud</span></a></li>
+									<li><a href="#" class="icon fa-youtube"><span>YouTube</span></a></li>
+									<li><a href="#" class="icon fa-blogger"><span>Blogger</span></a></li>
+									<li><a href="#" class="icon fa-flickr"><span>Flickr</span></a></li>
+									<li><a href="#" class="icon fa-vimeo"><span>Vimeo</span></a></li>
+									-->
+								</ul>
+								<hr />
+							</div>
+						</div>
+					</div>
+					<footer>
+						<ul id="copyright">
+							<li>&copy; OvO Realty Inc. All rights reserved.</li>
+					</footer>
+</body>
+<!-- InstanceEnd --></html>

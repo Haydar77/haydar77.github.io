@@ -1,0 +1,286 @@
+﻿<!doctype html>
+<html><!-- InstanceBegin template="/Templates/template.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta charset="utf-8">
+<title>template</title>
+<link href="assets/css/main.css" rel="stylesheet" type="text/css">
+<!-- InstanceBeginEditable name="EditRegion2" -->
+            <script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js"></script>
+   	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("#hide").click(function(){
+        $("p").hide();
+    });
+    $("#show").click(function(){
+        $("p").show();
+    });
+});
+</script> 
+<!-- InstanceEndEditable -->
+</head>
+<body>
+    <div id="banner">
+    <img src="images/banner.png" width="975" height="160" alt=""/> </div>
+<nav id="nav">
+				<ul class="container">
+					<li><a href="index.html">Home</a></li>
+				  <li><a href="mortcal.html">Mortgage Calculator</a></li>
+					<li><a href="#portfolio">Property Listings</a></li>
+					<li><a href="#contact">Leave a Review</a></li>
+                    <li><a href="locate.html">Find Us</a></li>
+				</ul>
+</nav>
+			<!-- InstanceBeginEditable name="EditRegion1" --> 
+                <div class="wrapper style1 first">
+            <strong>Main office</strong>: 416-967-1111<br><br>
+            <p class="top"><strong>Aubrey Graham</strong>: 416-732-3334</p>
+            <p><strong>Abel Tesfaye</strong>: 905-585-3923</p>
+            <p><strong>James Harden</strong>: 647-222-9999</p>
+            <p><strong>DeMar DeRozan</strong>: 416-123-4567</p>
+            <p><strong>Kyle Lowry</strong>: 416-987-6543</p>
+            <p class="bottom"><strong>Cory Joseph</strong>: 647-333-3333</p>
+            <p><strong>Tim Duncan</strong>: 905-111-3451</p>
+            <a href="#bottom"><button id="show">Agent Numbers</button></a>
+			<a href="#top"><button id="hide">Hide</button></a><br><br><br>
+            <h4>OvO Realty Inc. is conveniently located in the core of Downtown Toronto, Ontario at 40 Bay Street. Please refer to the map below.</h4>
+            <!-- Map Div -->
+
+<div id="map">
+
+</div>
+<!-- End Map Div -->
+
+            </div>
+   <script type="text/javascript">
+ 			 google.maps.event.addDomListener(window, 'load', init);
+    		function init() {
+			var mapOptions = {
+                    zoom: 12,
+                    center: new google.maps.LatLng(43.6435, -79.3791),                    
+                    styles:[
+    {
+        "featureType": "all",
+        "elementType": "labels.text.fill",
+        "stylers": [
+            {
+                "color": "#ffffff"
+            }
+        ]
+    },
+    {
+        "featureType": "all",
+        "elementType": "labels.text.stroke",
+        "stylers": [
+            {
+                "color": "#000000"
+            },
+            {
+                "lightness": 13
+            }
+        ]
+    },
+    {
+        "featureType": "administrative",
+        "elementType": "geometry.fill",
+        "stylers": [
+            {
+                "color": "#000000"
+            }
+        ]
+    },
+    {
+        "featureType": "administrative",
+        "elementType": "geometry.stroke",
+        "stylers": [
+            {
+                "color": "#A39257"
+            },
+            {
+                "lightness": 14
+            },
+            {
+                "weight": 1.4
+            }
+        ]
+    },
+    {
+        "featureType": "landscape",
+        "elementType": "all",
+        "stylers": [
+            {
+                "color": "#4B6998"
+            }
+        ]
+    },
+    {
+        "featureType": "poi",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#9EB2C5"
+            },
+            {
+                "lightness": 5
+            }
+        ]
+    },
+    {
+        "featureType": "road.highway",
+        "elementType": "geometry.fill",
+        "stylers": [
+            {
+                "color": "#000000"
+            }
+        ]
+    },
+    {
+        "featureType": "road.highway",
+        "elementType": "geometry.stroke",
+        "stylers": [
+            {
+                "color": "#A49259"
+            },
+            {
+                "lightness": 25
+            }
+        ]
+    },
+    {
+        "featureType": "road.arterial",
+        "elementType": "geometry.fill",
+        "stylers": [
+            {
+                "color": "#000000"
+            }
+        ]
+    },
+    {
+        "featureType": "road.arterial",
+        "elementType": "geometry.stroke",
+        "stylers": [
+            {
+                "color": "#A49259"
+            },
+            {
+                "lightness": 16
+            }
+        ]
+    },
+    {
+        "featureType": "road.local",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#000000"
+            }
+        ]
+    },
+    {
+        "featureType": "transit",
+        "elementType": "all",
+        "stylers": [
+            {
+                "color": "#A49259"
+            }
+        ]
+    },
+    {
+        "featureType": "water",
+        "elementType": "all",
+        "stylers": [
+            {
+                "color": "#021019"
+            }
+        ]
+    }
+]
+};
+	var mapElement = document.getElementById('map');
+	var map = new google.maps.Map(mapElement, mapOptions);
+	var marker = new google.maps.Marker({
+             position: new google.maps.LatLng(43.6435, -79.3791),
+             animation:google.maps.Animation.BOUNCE,
+             map: map});
+	var infowindow = new google.maps.InfoWindow({
+ 			 content:"Ovo Realty Inc." }); 
+ 			 infowindow.open(map,marker);     }
+</script>
+
+                        <!-- InstanceEndEditable -->
+            <div class="wrapper style4">
+<article id="contact" class="container 75%">
+
+					<header>
+						<h2>Leave us a message.</h2>
+						<p>We will try to get back to you as soon as possible!</p>
+					</header>
+					<div>
+						<div class="row">
+							<div class="12u">
+								<form method="post" action="#">
+									<div>
+										<div class="row">
+											<div class="6u 12u(mobile)">
+												<input type="text" name="name" id="name" placeholder="Name" />
+											</div>
+											<div class="6u 12u(mobile)">
+												<input type="text" name="email" id="email" placeholder="Email" />
+											</div>
+										</div>
+										<div class="row">
+											<div class="12u">
+												<input type="text" name="subject" id="subject" placeholder="Subject" />
+											</div>
+										</div>
+										<div class="row">
+											<div class="12u">
+												<textarea name="message" id="message" placeholder="Message"></textarea>
+											</div>
+										</div>
+										<div class="row 200%">
+											<div class="12u">
+												<ul class="actions">
+													<li><input type="submit" value="Send Message" /></li>
+													<li><input type="reset" value="Clear Form" class="alt" /></li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+                        <div class="row">
+							<div class="12u">
+								<hr />
+								<h3>Find us on ...</h3>
+								<ul class="social">
+									<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+									<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+									<li><a href="#" class="icon fa-linkedin"><span class="label">LinkedIn</span></a></li>
+									<li><a href="#" class="icon fa-tumblr"><span class="label">Tumblr</span></a></li>
+									<li><a href="#" class="icon fa-google-plus"><span class="label">Google+</span></a></li>
+									<!--
+									<li><a href="#" class="icon fa-rss"><span>RSS</span></a></li>
+									<li><a href="#" class="icon fa-instagram"><span>Instagram</span></a></li>
+									<li><a href="#" class="icon fa-foursquare"><span>Foursquare</span></a></li>
+									<li><a href="#" class="icon fa-skype"><span>Skype</span></a></li>
+									<li><a href="#" class="icon fa-soundcloud"><span>Soundcloud</span></a></li>
+									<li><a href="#" class="icon fa-youtube"><span>YouTube</span></a></li>
+									<li><a href="#" class="icon fa-blogger"><span>Blogger</span></a></li>
+									<li><a href="#" class="icon fa-flickr"><span>Flickr</span></a></li>
+									<li><a href="#" class="icon fa-vimeo"><span>Vimeo</span></a></li>
+									-->
+								</ul>
+								<hr />
+							</div>
+						</div>
+					</div>
+					<footer>
+						<ul id="copyright">
+							<li>&copy; OvO Realty Inc. All rights reserved.</li>
+					</footer>
+</body>
+<!-- InstanceEnd --></html>
